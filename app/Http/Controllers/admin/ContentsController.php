@@ -33,7 +33,9 @@ class ContentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.'.$this->tb.'.create', array(
+            'tb'=>$this->tb,
+        ));
     }
 
     /**
@@ -44,19 +46,9 @@ class ContentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Content::createContent($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,7 +74,7 @@ class ContentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Content::saveContent($request, $id);
     }
 
     /**
