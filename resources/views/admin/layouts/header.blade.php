@@ -6,9 +6,10 @@
     <meta name="keywords" content="Админ панель" />
     <meta name="description" content="Админ панель" />
     <title>Админ панель</title>
+    <link href="{!! asset('assets/css/font-awesome.css') !!}" media="all" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/css/bootstrap-reset.css') !!}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{!! asset('assets/css/font-awesome.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
     <link href="{!! asset('assets/css/jquery.easy-pie-chart.css') !!}" media="all" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/css/owl.carousel.css') !!}" media="all" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/css/slidebars.css') !!}" media="all" rel="stylesheet" type="text/css" />

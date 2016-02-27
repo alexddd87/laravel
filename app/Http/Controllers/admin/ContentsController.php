@@ -66,7 +66,11 @@ class ContentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = Content::getContent($id);
+        return view('admin.'.$this->tb.'.edit', array(
+            'row'=>$row,
+            'tb'=>$this->tb,
+        ));
     }
 
     /**

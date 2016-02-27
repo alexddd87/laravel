@@ -20,6 +20,8 @@
 <script src="{!! asset('assets/js/sparkline-chart.js') !!}"></script>
 <script src="{!! asset('assets/js/easy-pie-chart.js') !!}"></script>
 <script src="{!! asset('assets/js/count.js') !!}"></script>
+<script src="{!! asset('assets/js/form-component.js') !!}"></script>
+
 
 <script>
 

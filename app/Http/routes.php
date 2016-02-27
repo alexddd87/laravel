@@ -26,7 +26,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'authAdmin'), function()
 
     Route::get('contents/edit/{id}', [
         'as'=>'admin-contents-edit',
-        'uses'=>'admin/ContentsController@edit'
+        'uses'=>'admin\ContentsController@edit'
     ]);
 
     Route::post('contents/edit/{id}', 'admin\ContentsController@save');

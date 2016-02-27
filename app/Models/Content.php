@@ -28,12 +28,7 @@ class Content extends Model
 
     static function getContent($id)
     {
-        $row = DB::table('contents')
-            ->join(self::$adminLang.'_contents AS tbLang', 'contents.id', '=', 'tbLang.contents_id')
-            ->where('id', $id)
-            ->first();
-
-        return $row;
+        return Content::find($id);
     }
 
     static function saveData($id)
