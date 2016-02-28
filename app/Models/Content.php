@@ -16,37 +16,42 @@ class Content extends Model
     );
 
 
-    static function getListContent()
+    public function getListContent()
     {
-        return Content::get();
+        return $this->get();
     }
 
 
-    static function getContent($id)
+    public function getContent($id)
     {
-        return Content::find($id);
+        return $this->find($id);
     }
 
 
-    static function saveContent($request, $id)
+    public function saveContent($request, $id)
     {
-        $item = self::find($id);
-        $item->url = $request::input('url');
+        $item = $this->find($id);
+        $item->url = $request->input('url');
 
-        $sub=$request::input('sub_id');
+        $sub=$request->input('sub_id');
         if($sub==0)$sub=NULL;
         $item->sub_id = $sub;
-        $item->active = $request::input('active');
-        $item->name = $request::input('name');
-        $item->body = $request::input('body');
+        $item->active = $request->input('active');
+        $item->name = $request->input('name');
+        $item->body = $request->input('body');
         $item->save();
     }
 
 
-    static function createContent($data)
+    public function createContent($data)
     {
-        $item = self::create($data);
+        $item = $this->create($data);
         $id = $item->id;
+    }
+
+    public function deleteContent($id)
+    {
+        $this->Destroy($id);
     }
 
 }

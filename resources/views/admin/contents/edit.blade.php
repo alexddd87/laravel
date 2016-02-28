@@ -1,6 +1,7 @@
 @extends('admin.layouts.default')
 
 @section('content')
+    {!! link_to_route('home', 'Home') !!}
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
@@ -9,7 +10,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="form">
-                        <form class="cmxform form-horizontal tasi-form" id="signupForm" method="posts" action="" novalidate="novalidate">
+                        <form class="cmxform form-horizontal tasi-form" id="signupForm" method="post" action="" novalidate="novalidate">
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-2">Название</label>
 

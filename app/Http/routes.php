@@ -29,7 +29,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'authAdmin'), function()
         'uses'=>'admin\ContentsController@edit'
     ]);
 
-    Route::post('contents/edit/{id}', 'admin\ContentsController@save');
+    Route::post('contents/edit/{id}', 'admin\ContentsController@update');
 
     Route::get('contents/add', [
         'as'=>'admin-contents-add',
@@ -71,4 +71,4 @@ Route::post('admin/login', [
 
 
 # Index Page - Last route, no matches
-Route::get('/', array('uses' => 'HomeController@Index'));
+Route::get('/', array('as'=>'home', 'uses' => 'HomeController@Index'));

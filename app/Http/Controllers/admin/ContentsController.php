@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,9 +18,9 @@ class ContentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Content $contentModel)
     {
-        $list = Content::getListContent();
+        $list = $contentModel->getListContent();
         return view('admin.'.$this->tb.'.index', array(
             'list'=>$list,
             'tb'=>$this->tb,
@@ -31,7 +32,7 @@ class ContentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Content $contentModel)
     {
         return view('admin.'.$this->tb.'.create', array(
             'tb'=>$this->tb,
@@ -44,9 +45,9 @@ class ContentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Content $contentModel, Request $request)
     {
-        Content::createContent($request);
+        $contentModel->createContent($request);
     }
 
 
@@ -56,9 +57,9 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Content $contentModel, $id)
     {
-        $row = Content::getContent($id);
+        $row = $contentModel->getContent($id);
         return view('admin.'.$this->tb.'.edit', array(
             'row'=>$row,
             'tb'=>$this->tb,
@@ -72,9 +73,9 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Content $contentModel, Request $request, $id)
     {
-        Content::saveContent($request, $id);
+        $contentModel->saveContent($request, $id);
     }
 
     /**
@@ -83,8 +84,8 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Content $contentModel, $id)
     {
-        //
+        $contentModel->deleteContent($id);
     }
 }
