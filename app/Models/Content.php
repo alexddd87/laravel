@@ -3,50 +3,61 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class Content extends Model
 {
     public $timestamps = false;
 
-    static $rules = array('name' => 'required|min:2|max:300', 'url' => 'required|min:1|max:100');
+    public $rules = array('name' => 'required|min:2|max:300', 'slug' => 'required|min:1|max:100');
     protected $fillable = array(
-        'url',
-        'sub',
-        'active',
+        'name',
+        'body',
+        'slug',
+        'sub_id',
+        'enabled',
     );
 
 
     public function getListContent()
     {
-        return $this->get();
+        return $this->orderBy('sort', 'ASC')->get();
     }
-
 
     public function getContent($id)
     {
         return $this->find($id);
     }
 
-
     public function saveContent($request, $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+
+        if($validator->fails()){
+            return $validator;
+        }
+
         $item = $this->find($id);
-        $item->url = $request->input('url');
+        $item->slug = $request->input('slug');
 
         $sub=$request->input('sub_id');
         if($sub==0)$sub=NULL;
         $item->sub_id = $sub;
-        $item->active = $request->input('active');
+        $item->enabled = $request->input('enabled');
         $item->name = $request->input('name');
         $item->body = $request->input('body');
         $item->save();
     }
 
 
-    public function createContent($data)
+    public function createContent($request)
     {
-        $item = $this->create($data);
-        $id = $item->id;
+        $validator = Validator::make($request->all(), $this->rules);
+
+        if($validator->fails()){
+            return $validator;
+        }
+        return $this->create($request->all());
     }
 
     public function deleteContent($id)
@@ -54,4 +65,22 @@ class Content extends Model
         $this->Destroy($id);
     }
 
+
+    public function scopeEnabled($query)
+    {
+        $query->where('enabled', '=', 1);
+    }
+
+    public function selectSub($id = 0)
+    {
+        $list = $this->getListContent();
+        $arr = array('0'=>'-Корневой раздел-');
+        foreach($list as $row)
+        {
+            if($row->id!=$id)
+                $arr[$row->id]=$row->name;
+        }
+
+        return $arr;
+    }
 }

@@ -112,5 +112,44 @@ var Script = function () {
         })
     }
 
-
+    hideNotification();
 }();
+
+
+$(document).on('click', '.enableStatus', function()
+{
+    enableItem($(this));
+});
+
+function enableItem(obj)
+{
+    var enable = 0;
+    if( obj.find('.label-danger').length>0 )
+    {
+        var enable = 1;
+        obj.children().html('Вкл.');
+        obj.children().removeClass('label-danger');
+        obj.children().addClass('label-success');
+    }
+    else{
+        obj.children().html('Выкл.');
+        obj.children().addClass('label-danger');
+        obj.children().removeClass('label-success');
+    }
+
+    var tb = obj.attr('data-tb');
+    var id = obj.attr('data-id');
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    var dataString = 'id=' + id + '&tb=' + tb + '&enable=' + enable + '&_token=' + CSRF_TOKEN;
+    $.ajax({type: "POST", url: "/admin/enable", data: dataString, dataType: 'text', cache: false, success: function(data)
+    {
+        $('section.panel').append(data);
+        hideNotification();
+    }});
+}
+
+function hideNotification()
+{
+    window.setTimeout(function() { $(".notification-container").alert('close'); }, 5000);
+}
+

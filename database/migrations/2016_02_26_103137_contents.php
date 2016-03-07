@@ -14,6 +14,7 @@ class Contents extends Migration
     {
         Schema::create('contents', function(Blueprint $t){
             $t->increments('id');
+            $t->integer('sub_id');
             $t->string('title', 300);
             $t->string('keywords', 300);
             $t->string('description', 300);
@@ -21,6 +22,7 @@ class Contents extends Migration
             $t->text('body');
             $t->string('slug', 200);
             $t->boolean('enabled');
+            $t->integer('sort');
             $t->timestamps();
         });
     }

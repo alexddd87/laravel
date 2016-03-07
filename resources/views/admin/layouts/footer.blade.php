@@ -1,3 +1,5 @@
+
+
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{!! asset('assets/js/jquery.js') !!}"></script>
 <script src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
@@ -13,16 +15,35 @@
 <!--right slidebar-->
 <script src="{!! asset('assets/js/slidebars.min.js') !!}"></script>
 
-<!--common script for all pages-->
-<script src="{!! asset('assets/js/common-scripts.js') !!}"></script>
+
 
 <!--script for this page-->
 <script src="{!! asset('assets/js/sparkline-chart.js') !!}"></script>
 <script src="{!! asset('assets/js/easy-pie-chart.js') !!}"></script>
 <script src="{!! asset('assets/js/count.js') !!}"></script>
+
+
+
+<script src="{!! asset('assets/js/jquery-ui-1.9.2.custom.min.js') !!}"></script>
+<!--custom switch-->
+<script src="{!! asset('assets/js/bootstrap-switch.js') !!}"></script>
+<!--custom tagsinput-->
+<script src="{!! asset('assets/js/jquery.tagsinput.js') !!}"></script>
+<!--custom checkbox & radio-->
+
+
+<script type="text/javascript" src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-daterangepicker/date.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript" src="/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 <script src="{!! asset('assets/js/form-component.js') !!}"></script>
 
 
+<!--common script for all pages-->
+<script src="{!! asset('assets/js/common-scripts.js') !!}"></script>
 <script>
 
     //owl carousel

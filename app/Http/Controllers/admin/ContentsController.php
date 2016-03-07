@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\admin;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Content;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 
 class ContentsController extends Controller
 {
+    private $name = 'Страницы';
     private $tb = 'contents';
     /**
      * Display a listing of the resource.
@@ -24,6 +25,7 @@ class ContentsController extends Controller
         return view('admin.'.$this->tb.'.index', array(
             'list'=>$list,
             'tb'=>$this->tb,
+            'name'=>$this->name,
         ));
     }
 
@@ -34,8 +36,10 @@ class ContentsController extends Controller
      */
     public function create(Content $contentModel)
     {
+        $select = $contentModel->selectSub();
         return view('admin.'.$this->tb.'.create', array(
             'tb'=>$this->tb,
+            'select'=>$select,
         ));
     }
 
@@ -47,7 +51,16 @@ class ContentsController extends Controller
      */
     public function store(Content $contentModel, Request $request)
     {
-        $contentModel->createContent($request);
+        $item = $contentModel->createContent($request);
+
+        if( $item instanceof Validator )
+        {
+            return redirect()->route('admin-contents-edit', ['id' => $item->id])->withErrors($item);
+        }
+        else{
+            Session::flash('message', $this->messageAdmin('Successfully updated Contents!'));
+        }
+        return redirect()->route('admin-contents-edit', ['id' => $item->id]);
     }
 
 
@@ -59,9 +72,12 @@ class ContentsController extends Controller
      */
     public function edit(Content $contentModel, $id)
     {
-        $row = $contentModel->getContent($id);
+        $select = $contentModel->selectSub($id);
+
+        $item = $contentModel->getContent($id);
         return view('admin.'.$this->tb.'.edit', array(
-            'row'=>$row,
+            'item'=>$item,
+            'select'=>$select,
             'tb'=>$this->tb,
         ));
     }
@@ -75,7 +91,16 @@ class ContentsController extends Controller
      */
     public function update(Content $contentModel, Request $request, $id)
     {
-        $contentModel->saveContent($request, $id);
+        $validator = $contentModel->saveContent($request, $id);//dd($validator instanceof Validator);
+        if($validator !== NULL)
+        {
+            return redirect()->route('admin-contents-edit', ['id' => $id])->withErrors($validator);
+        }
+        else{
+            Session::flash('message', $this->messageAdmin('Successfully updated Contents!'));
+        }
+
+        return redirect()->route('admin-contents-edit', ['id' => $id]);
     }
 
     /**
@@ -87,5 +112,6 @@ class ContentsController extends Controller
     public function destroy(Content $contentModel, $id)
     {
         $contentModel->deleteContent($id);
+        return redirect()->route('admin-contents');
     }
 }

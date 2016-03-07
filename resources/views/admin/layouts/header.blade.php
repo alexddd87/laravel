@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Language" content="ru" />
     <meta name="keywords" content="Админ панель" />
     <meta name="description" content="Админ панель" />
+    <meta name="csrf-token" content="{!! csrf_token() !!}" />
     <title>Админ панель</title>
     <link href="{!! asset('assets/css/font-awesome.css') !!}" media="all" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />

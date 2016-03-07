@@ -16,59 +16,65 @@
  *  ------------------------------------------
  */
 
-Route::group(array('prefix' => 'admin', 'before' => 'authAdmin'), function()
-{
+Route::group(['middleware' => 'web'], function () {
+    Route::group(['namespace'=>'admin', 'prefix' => 'admin'], function()
+    {
+        Route::group(['middleware' => ['adminOnly']], function () {
+            Route::post('enable', 'AjaxController@enable');
 
+            Route::get('contents', [
+                'as'=>'admin-contents',
+                'uses'=>'ContentsController@index'
+            ]);
 
-    Route::resource('contents', 'admin\ContentsController');
+            Route::get('contents/edit/{id}', [
+                'as'=>'admin-contents-edit',
+                'uses'=>'ContentsController@edit'
+            ]);
 
+            Route::put('contents/edit/{id}', 'ContentsController@update');
 
+            Route::get('contents/create', [
+                'as'=>'admin-contents-create',
+                'uses'=>'ContentsController@create'
+            ]);
+            Route::post('contents/create', 'ContentsController@store');
 
-    Route::get('contents/edit/{id}', [
-        'as'=>'admin-contents-edit',
-        'uses'=>'admin\ContentsController@edit'
-    ]);
+            Route::get('contents/delete/{user}', [
+                'as'=>'admin-contents-delete',
+                'uses'=>'admin\ContentsController@delete'
+            ]);
+            Route::delete('contents/destroy/{id}', 'ContentsController@destroy');
+            //Route::controller('content', 'AdminUsersController');
+            #/ Content app
 
-    Route::post('contents/edit/{id}', 'admin\ContentsController@update');
+            # Admin Dashboard
+            Route::get('/', [
+                'as'=>'admin-dashboard',
+                'uses'=>'admin\AdminDashboardController@Index'
+            ]);
 
-    Route::get('contents/add', [
-        'as'=>'admin-contents-add',
-        'uses'=>'ContentsController@add'
-    ]);
-    Route::post('contents/add', 'admin\ContentsController@add');
+            # Admin Logout
+            Route::get('/logout', [
+                'as'=>'admin-logout',
+                'uses'=>'AdminLoginController@logout'
+            ]);
 
-    Route::get('contents/delete/{user}', [
-        'as'=>'admin-contents-delete',
-        'uses'=>'admin\ContentsController@delete'
-    ]);
-    Route::post('contents/delete/{user}', 'admin\ContentsController@delete');
-    //Route::controller('content', 'AdminUsersController');
-    #/ Content app
+            # Index Page - Last route, no matches
+            Route::get('/', array('as'=>'home', 'uses' => 'HomeController@Index'));
 
-    # Admin Dashboard
-    Route::get('/', [
-        'as'=>'admin-dashboard',
-        'uses'=>'admin\AdminDashboardController@Index'
-    ]);
+        });
 
-    # Admin Logout
-    Route::get('/logout', [
-        'as'=>'admin-logout',
-        'uses'=>'admin\AdminLoginController@logout'
-    ]);
+        // Authentication routes...
+        Route::get('login', array('as'=>'admin-login', 'uses'=>'AdminLoginController@loginView'));
+        Route::post('login', array('as'=>'admin-login', 'uses'=>'AdminLoginController@login'));
+        Route::get('logout', array('as'=>'admin-logout', 'uses'=>'AdminLoginController@logout'));
+    });
 
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
 
-Route::get('admin/login', [
-    'as'    => 'admin-login',
-    'uses'  => 'AdminLoginController@index'
-]);
-
-Route::post('admin/login', [
-    'uses'  => 'AdminLoginController@postLogin'
-]);
 
 
-
-# Index Page - Last route, no matches
-Route::get('/', array('as'=>'home', 'uses' => 'HomeController@Index'));

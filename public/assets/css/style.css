@@ -5497,3 +5497,31 @@ a.guest-on i {
 .lobby {
     padding: 0 !important;
 }
+.inline{
+    display: inline;
+}
+.fa {
+    padding: 2px 0;
+}
+.notification-container {
+    position: fixed;
+    z-index: 9999;
+    font-weight: bold;
+    top: 0;
+    width: 360px;
+    left: 40%;
+    margin-top: -2px;
+
+}
+.enableStatus{
+    cursor: pointer;
+}
+.clear{
+    clear: both;
+}
+.buttonPanel{
+    margin-bottom: 15px;
+}
+.buttonPanel>div{
+    margin-right: 15px;
+}
