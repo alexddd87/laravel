@@ -80,6 +80,5 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::resource('contents', 'admin\ContentsController');
 });
 
-
 Route::get('/rates','MainController@index');
 Route::get('article', 'ArticleController@index');
