@@ -13,27 +13,27 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                Advanced Form validations
+                Заполните форму
             </header>
             <div class="panel-body">
                 <div class="form">
                     @if(isset($item))
-                        {!! Form::open(array('method' => 'put', 'class'=>'cmxform form-horizontal tasi-form')) !!}
+                        {!! Form::open(array('method' => 'put', 'class'=>'cmxform form-horizontal tasi-form', 'novalidate'=>"novalidate")) !!}
                     @else
-                        {!! Form::open(array('method' => 'post', 'class'=>'cmxform form-horizontal tasi-form')) !!}
+                        {!! Form::open(array('method' => 'post', 'class'=>'cmxform form-horizontal tasi-form', 'novalidate'=>"novalidate")) !!}
                     @endif
 
                         <div class="form-group ">
                             <label for="name" class="control-label col-lg-2">Название</label>
 
                             <div class="col-lg-10">
-                                <input class=" form-control" id="name" name="name" type="text" value="{{ isset($item->name) ? $item->name : '' }}">
+                                <input class="form-control" id="name" name="name" type="text" value="{{ isset($item->name) ? $item->name : '' }}" minlength="2" required>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="slug" class="control-label col-lg-2">URL</label>
                             <div class="col-lg-10">
-                                <input class=" form-control" id="slug" name="slug" type="text" value="{{ isset($item->slug) ? $item->slug : '' }}">
+                                <input class="form-control" id="slug" name="slug" type="text" value="{{ isset($item->slug) ? $item->slug : '' }}" required>
                             </div>
                         </div>
                         <div class="form-group">

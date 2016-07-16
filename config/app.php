@@ -164,6 +164,8 @@ return [
          * Dev
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+        //App\Repository\UserRepository::class
+        App\Providers\RatesProvider::class,
 
     ],
 

@@ -3,7 +3,7 @@
 // Home
 Breadcrumbs::register('home', function($breadcrumbs)
 {
-    $breadcrumbs->push('home', '/admin');
+    $breadcrumbs->push('Главная', '/admin');
 });
 
 // Home > About
@@ -12,6 +12,21 @@ Breadcrumbs::register('admin-contents', function($breadcrumbs)
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Страницы', route('admin-contents'));
 });
+Breadcrumbs::register('admin-contents-edit', function($breadcrumbs)
+{
+    $breadcrumbs->parent('admin-contents');
+    $breadcrumbs->push('Редактирование', route('admin-contents'));
+});
+
+Breadcrumbs::register('admin-contents-add', function($breadcrumbs)
+{
+    $breadcrumbs->parent('admin-contents');
+    $breadcrumbs->push('Добавление', route('admin-contents'));
+});
+
+
+
+
 
 // Home > Blog
 Breadcrumbs::register('blog', function($breadcrumbs)

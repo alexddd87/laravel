@@ -1,6 +1,7 @@
 @extends('admin.layouts.default')
 
 @section('content')
+    {!! Breadcrumbs::render('admin-contents') !!}
     <div class="row">
         <div class="col-lg-12">
             <div class="buttonPanel">

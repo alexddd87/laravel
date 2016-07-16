@@ -13,6 +13,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+    function __construct() {
+
+
+    }
+
+
     public function messageAdmin($text, $type='')
     {
         if($type=='error')

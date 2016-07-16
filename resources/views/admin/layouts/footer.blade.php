@@ -44,6 +44,9 @@
 
 <!--common script for all pages-->
 <script src="{!! asset('assets/js/common-scripts.js') !!}"></script>
+
+<script type="text/javascript" src="{!! asset('assets/js/jquery.validate.min.js') !!}"></script>
+<script src="{!! asset('assets/js/form-validation-script.js') !!}"></script>
 <script>
 
     //owl carousel
