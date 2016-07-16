@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class Content extends Model
+class Content extends BaseModel
 {
     public $timestamps = false;
 

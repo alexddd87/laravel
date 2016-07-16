@@ -22,31 +22,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::group(['middleware' => ['adminOnly']], function () {
             Route::post('enable', 'AjaxController@enable');
 
-            Route::get('contents', [
-                'as'=>'admin-contents',
-                'uses'=>'ContentsController@index'
-            ]);
-
-            Route::get('contents/edit/{id}', [
-                'as'=>'admin-contents-edit',
-                'uses'=>'ContentsController@edit'
-            ]);
-
-            Route::put('contents/edit/{id}', 'ContentsController@update');
-
-            Route::get('contents/create', [
-                'as'=>'admin-contents-create',
-                'uses'=>'ContentsController@create'
-            ]);
-            Route::post('contents/create', 'ContentsController@store');
-
-            Route::get('contents/delete/{user}', [
-                'as'=>'admin-contents-delete',
-                'uses'=>'admin\ContentsController@delete'
-            ]);
-            Route::delete('contents/destroy/{id}', 'ContentsController@destroy');
-            //Route::controller('content', 'AdminUsersController');
-            #/ Content app
 
             # Admin Dashboard
             Route::get('/', [
@@ -77,7 +52,7 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::group(['prefix' => 'api/v1'], function () {
-    Route::resource('contents', 'admin\ContentsController');
+    Route::resource('contents', 'Admin\ContentsController');
 });
 
 Route::get('/rates','MainController@index');

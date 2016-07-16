@@ -12,7 +12,7 @@ use App\Models\User;
 // namespace Repositories\User;
 // Same for IUserRepository interface
 
-class UserRepository implements IUserRepository {
+class UserRepository implements Repository {
 
     public function getAllUsers()
     {

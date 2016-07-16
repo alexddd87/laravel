@@ -29,11 +29,9 @@ class RepoUserTest extends Command
      */
 
     protected $user;
-    public function __construct(Repository\IUserRepository $user)
+    public function __construct()
     {
         parent::__construct();
-//dd($user);
-        $this->user = $user;
     }
 
     /**
