@@ -38,19 +38,18 @@ Route::group(['middleware' => 'web'], function () {
 */
         });
 
-        // Authentication routes...
-        Route::get('login', array('as'=>'admin-login', 'uses'=>'AdminLoginController@loginView'));
-        Route::post('login', array('as'=>'admin-login', 'uses'=>'AdminLoginController@login'));
-        Route::get('logout', array('as'=>'admin-logout', 'uses'=>'AdminLoginController@logout'));
     });
 
     Route::auth();
 
     //Route::get('/', 'HomeController@index');
+
+
+
 });
 
-Route::group(['prefix' => 'api/v1'], function () {
-    Route::resource('contents', 'Admin\ContentsController');
+Route::group(['middleware' => 'api', 'prefix' => 'api/v1'], function () {
+    Route::resource('contents', 'Api\ContentsController');
 });
 
 Route::get('/rates','MainController@index');

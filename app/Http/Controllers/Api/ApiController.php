@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Transformers\Transformer;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Router;
 use App\Http\Requests;
@@ -86,7 +87,7 @@ class ApiController extends Controller
     /**
      * @return mixed
      */
-    public function show()
+    public function show($id)
     {
         if(isset($id['primaryKey'])) {
             $id = $id->$id['primaryKey'];
@@ -199,20 +200,24 @@ class ApiController extends Controller
         abort(404);
     }
 
+    /**
+     * Return custom request if exist else return BaseRequest
+     *
+     * @return \Illuminate\Foundation\Application|mixed
+     */
     public function getRequest()
     {
         $route = app(Router::class);
-        $request = 'App\Http\Requests\BaseRequest';
 
         if (method_exists($route->getCurrentRoute(), 'getAction')) {
             $action = explode('.', $route->getCurrentRoute()->getAction()['as']);
             $class_name = 'App\Http\Requests\\' . ucfirst($action[count($action) - 2]) . 'Request';
 
             if (class_exists($class_name)) {
-                $request = $class_name;
+                $request = app($class_name);
             }
         }
 
-        return app($request);
+        return $request;
     }
 }
