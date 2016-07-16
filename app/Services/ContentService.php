@@ -21,5 +21,4 @@ class ContentService extends BaseService
         $this->transformer = app(Transformer::class);
     }
 
-
 }

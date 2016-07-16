@@ -1,12 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Actions\Base\DestroyAction;
-use App\Actions\Base\IndexAction;
-use App\Actions\Base\ShowAction;
+use App\Http\Controllers\Controller;
 use App\Transformers\Transformer;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Router;
 use App\Http\Requests;
@@ -206,10 +202,17 @@ class ApiController extends Controller
     public function getRequest()
     {
         $route = app(Router::class);
-        $action = explode('.', $route->getCurrentRoute()->getAction()['as']);
-        $request = 'App\Http\Requests\\' . ucfirst($action[count($action) - 2]) . 'Request';
+        $request = 'App\Http\Requests\BaseRequest';
 
-        $request = class_exists($request) ? $request : 'App\Http\Requests\Request';
+        if (method_exists($route->getCurrentRoute(), 'getAction')) {
+            $action = explode('.', $route->getCurrentRoute()->getAction()['as']);
+            $class_name = 'App\Http\Requests\\' . ucfirst($action[count($action) - 2]) . 'Request';
+
+            if (class_exists($class_name)) {
+                $request = $class_name;
+            }
+        }
+
         return app($request);
     }
 }

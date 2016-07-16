@@ -17,16 +17,16 @@
  */
 
 Route::group(['middleware' => 'web'], function () {
-    Route::group(['namespace'=>'admin', 'prefix' => 'admin'], function()
+    Route::group(['namespace'=>'Admin', 'prefix' => 'admin'], function()
     {
         Route::group(['middleware' => ['adminOnly']], function () {
-            Route::post('enable', 'AjaxController@enable');
+            //Route::post('enable', 'AjaxController@enable');
 
-
+/*
             # Admin Dashboard
             Route::get('/', [
                 'as'=>'admin-dashboard',
-                'uses'=>'admin\AdminDashboardController@Index'
+                'uses'=>'\Admin\AdminDashboardController@Index'
             ]);
 
             # Admin Logout
@@ -35,9 +35,7 @@ Route::group(['middleware' => 'web'], function () {
                 'uses'=>'AdminLoginController@logout'
             ]);
 
-            # Index Page - Last route, no matches
-            Route::get('/', array('as'=>'home', 'uses' => 'HomeController@Index'));
-
+*/
         });
 
         // Authentication routes...
@@ -48,7 +46,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
 
-    Route::get('/', 'HomeController@index');
+    //Route::get('/', 'HomeController@index');
 });
 
 Route::group(['prefix' => 'api/v1'], function () {

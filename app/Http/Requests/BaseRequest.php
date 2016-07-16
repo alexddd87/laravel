@@ -11,6 +11,13 @@ namespace App\Http\Requests;
 
 class BaseRequest extends Request {
 
+
+    public function __construct($model = null)
+    {
+        $this->model = $model;
+
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,7 +35,10 @@ class BaseRequest extends Request {
      */
     public function rules()
     {
-        return [];
+        if (!isset($this->model->rules)) {
+            return [];
+        }
+        return $this->model->rules;
     }
 
 }

@@ -30,7 +30,7 @@ class AdminLoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password,'admin'=>'1', 'enabled'=>'1'], $remember)) {
             // Authentication passed...
             Auth::login(Auth::user(), $remember);
-            return redirect()->route('admin-contents');
+            return redirect()->route('admin-logout');
         }else{//('message', 'Login Failed')
 
             return redirect()->route('admin-login')->withErrors($request->all(), "message")->withInput();

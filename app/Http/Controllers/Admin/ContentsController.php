@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\ApiController;
 use App\Services\ContentService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
