@@ -7,6 +7,7 @@ use App\Models\Content;
 
 class ContentsRequest extends Request
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,6 +32,6 @@ class ContentsRequest extends Request
         else {
              $rules = [];
         }
-        return [];
+        return $rules;
     }
 }
