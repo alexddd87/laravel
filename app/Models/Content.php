@@ -9,18 +9,18 @@ class Content extends BaseModel
 {
     public $timestamps = false;
 
-    public static $rules = ['name' => 'required', 'slug' => 'required'];
+    public static $rules = ['name' => 'required', 'url' => 'required'];
     protected $fillable = [
         'name',
         'body',
-        'slug',
+        'url',
         'sub_id',
-        'enabled',
+        'active',
     ];
 
 
-    public function scopeEnabled($query)
+    public function scopeActive($query)
     {
-        $query->where('enabled', '=', 1);
+        $query->where('active', '=', 1);
     }
 }

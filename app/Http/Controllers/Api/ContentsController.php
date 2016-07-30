@@ -17,5 +17,4 @@ class ContentsController extends ApiController
 
         parent::__construct($this);
     }
-
 }

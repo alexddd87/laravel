@@ -12,14 +12,12 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function(Blueprint $t){
             $t->increments('id');
-            $t->integer('sub_id');
-            $t->string('title', 300);
-            $t->string('keywords', 300);
-            $t->string('description', 300);
+            $t->integer('sub_id')->unsigned()->nullable();
+            $t->foreign('sub_id')->references('id')->on('contents')->onDelete('cascade');
             $t->string('name', 300);
             $t->text('body');
-            $t->string('slug', 200);
-            $t->boolean('enabled');
+            $t->string('url', 200);
+            $t->boolean('active');
             $t->integer('sort');
             $t->timestamps();
         });
