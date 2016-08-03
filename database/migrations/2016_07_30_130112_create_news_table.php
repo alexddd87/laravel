@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategories extends Migration
+class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $t){
+        Schema::create('news', function(Blueprint $t){
             $t->increments('id');
             $t->string('name', 300);
             $t->text('body');
@@ -30,6 +30,6 @@ class CreateCategories extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('news');
     }
 }

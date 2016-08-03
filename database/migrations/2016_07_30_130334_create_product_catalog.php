@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersProduct extends Migration
+class CreateProductCatalog extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateOrdersProduct extends Migration
      */
     public function up()
     {
-        Schema::create('orders_product', function(Blueprint $t){
+        Schema::create('product_category', function(Blueprint $t){
             $t->increments('id');
             $t->integer('product_id')->unsigned();
             $t->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $t->integer('order_id')->unsigned();
-            $t->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $t->integer('category_id')->unsigned();
+            $t->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateOrdersProduct extends Migration
      */
     public function down()
     {
-        Schema::drop('orders_product');
+        Schema::drop('product_category');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategories extends Migration
+class CreateFilters extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class CreateCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $t){
+        Schema::create('filters', function(Blueprint $t){
             $t->increments('id');
+            $t->integer('sub_id')->unsigned()->nullable();
+            $t->foreign('sub_id')->references('id')->on('filters')->onDelete('cascade');
             $t->string('name', 300);
             $t->text('body');
             $t->string('url', 200);
@@ -22,7 +24,6 @@ class CreateCategories extends Migration
             $t->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -30,6 +31,6 @@ class CreateCategories extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('filters');
     }
 }

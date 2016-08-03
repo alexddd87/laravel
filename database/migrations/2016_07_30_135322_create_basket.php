@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersProduct extends Migration
+class CreateBasket extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,14 @@ class CreateOrdersProduct extends Migration
      */
     public function up()
     {
-        Schema::create('orders_product', function(Blueprint $t){
+        Schema::create('basket', function(Blueprint $t){
             $t->increments('id');
-            $t->integer('product_id')->unsigned();
+            $t->integer('product_id')->unsigned()->nullable();
             $t->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $t->integer('order_id')->unsigned();
-            $t->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $t->integer('price_id')->unsigned()->nullable();
+            $t->foreign('price_id')->references('id')->on('prices')->onDelete('cascade');
+            $t->integer('amount');
+            $t->integer('user_id')->unsigned()->nullable();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateOrdersProduct extends Migration
      */
     public function down()
     {
-        Schema::drop('orders_product');
+        Schema::drop('basket');
     }
 }

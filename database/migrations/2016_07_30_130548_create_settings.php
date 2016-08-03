@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategories extends Migration
+class CreateSettings extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,10 @@ class CreateCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $t){
+        Schema::create('settings', function(Blueprint $t){
             $t->increments('id');
-            $t->string('name', 300);
-            $t->text('body');
-            $t->string('url', 200);
-            $t->boolean('active');
-            $t->integer('sort');
-            $t->timestamps();
+            $t->string('key', 200)->uniqe();
+            $t->text('value');
         });
     }
 
@@ -30,6 +26,6 @@ class CreateCategories extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('settings');
     }
 }
