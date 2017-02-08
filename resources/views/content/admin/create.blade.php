@@ -1,7 +1,7 @@
 @extends('layouts.admin.default')
 
 @section('content')
-    {!! Breadcrumbs::render('admin-contents-add') !!}
-    @include("contents.admin._form")
+
+    @include("content.admin._form")
 
 @stop

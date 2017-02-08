@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-
-use App\Models\Content;
+use App\Services\ContentService;
+use App\Http\Requests\ContentRequest;
 
 class ContentController extends AdminController
 {
-    protected $service;
-
     public function __construct()
     {
-        $this->service = app(Content::class);
+        $this->service = app(ContentService::class);
+        $this->request = ContentRequest::class;
+        $this->moduleName = 'content';
     }
 }

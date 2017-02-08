@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="buttonPanel">
-                <a href="/admin/contents/create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> <span>Добавить новую страницу</span></a>
+                <a href="/admin/content/create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> <span>Добавить новую страницу</span></a>
             </div>
             <div class="cm-notification-container">{{ Session::get('message')!='' ? Session::get('message') : "" }}</div>
             <section class="panel">
