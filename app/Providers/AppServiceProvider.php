@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +14,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-       // App::bind('App\Repository\IUserRepository', 'App\Repository\UserRepository');
     }
 
     /**
@@ -26,6 +24,5 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
-
     }
 }
