@@ -20,7 +20,7 @@ class CreatePrices extends Migration
             $t->float('price');
             $t->integer('discount');
             $t->integer('stock');
-            $t->boolean('active');
+            $t->enum('enabled', array(0, 1))->default(0);
             $t->timestamps();
         });
     }

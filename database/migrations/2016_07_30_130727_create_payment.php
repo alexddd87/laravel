@@ -15,7 +15,7 @@ class CreatePayment extends Migration
         Schema::create('payment', function(Blueprint $t){
             $t->increments('id');
             $t->string('name', 300);
-            $t->boolean('active');
+            $t->enum('enabled', array(0, 1))->default(0);
             $t->integer('sort');
             $t->timestamps();
         });

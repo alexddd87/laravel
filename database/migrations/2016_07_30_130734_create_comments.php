@@ -20,7 +20,7 @@ class CreateComments extends Migration
             $t->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $t->string('name', 300);
             $t->string('body');
-            $t->boolean('active');
+            $t->enum('enabled', array(0, 1))->default(0);
             $t->timestamps();
         });
     }

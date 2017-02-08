@@ -19,7 +19,7 @@ class CreateFilters extends Migration
             $t->string('name', 300);
             $t->text('body');
             $t->string('url', 200);
-            $t->boolean('active');
+            $t->enum('enabled', array(0, 1))->default(0);
             $t->integer('sort');
             $t->timestamps();
         });

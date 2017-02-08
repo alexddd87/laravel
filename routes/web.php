@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => 'web', 'prefix' => 'admin'], function () {
+    Route::resource('content', 'Admin\ContentController');
+});
