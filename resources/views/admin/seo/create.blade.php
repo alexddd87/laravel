@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @include("content.admin._form")
+    @include("admin.{$moduleName}._form")
 
 @stop

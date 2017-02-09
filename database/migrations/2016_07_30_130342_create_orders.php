@@ -20,7 +20,7 @@ class CreateOrders extends Migration
             $t->integer('user_id')->unsigned()->nullable();
             $t->integer('currency_id')->unsigned()->nullable();
             $t->float('rate');
-            $t->integer('discount');
+            $t->integer('discount')->default(0);
             $t->float('sum');
             $t->text('body');
         });

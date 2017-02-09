@@ -20,6 +20,7 @@ class CreateTableSeo extends Migration
             $t->string('keywords');
             $t->text('description');
             $t->text('body');
+            $t->enum('enabled', array(0, 1))->default(0);
         });
     }
 

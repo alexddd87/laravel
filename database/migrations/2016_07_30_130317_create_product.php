@@ -19,7 +19,7 @@ class CreateProduct extends Migration
             $t->text('body');
             $t->string('url', 200);
             $t->enum('enabled', array(0, 1))->default(0);
-            $t->integer('sort');
+            $t->integer('sort')->default(0);
             $t->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateTableCart extends Migration
             $t->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $t->integer('price_id')->unsigned()->nullable();
             $t->foreign('price_id')->references('id')->on('prices')->onDelete('cascade');
-            $t->integer('amount');
+            $t->integer('amount')->default(1);
             $t->integer('user_id')->unsigned()->nullable();
         });
     }

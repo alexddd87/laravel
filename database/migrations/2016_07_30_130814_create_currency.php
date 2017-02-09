@@ -17,7 +17,7 @@ class CreateCurrency extends Migration
             $t->string('code', 50);
             $t->string('name', 300);
             $t->enum('enabled', array(0, 1))->default(0);
-            $t->integer('sort');
+            $t->integer('sort')->default(0);
             $t->timestamps();
         });
     }

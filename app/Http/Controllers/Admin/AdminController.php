@@ -20,8 +20,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $list = $this->service->all()->toArray();
-        return view($this->moduleName . '.admin.index', compact('list'));
+        $list = $this->service->all();
+        return view('admin.' . $this->moduleName . '.index', compact('list'));
     }
 
     /**
@@ -43,7 +43,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view($this->moduleName . '.admin.create');
+        return view('admin.' . $this->moduleName . '.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $item = $this->service->find($id);
-        return view($this->moduleName . '.admin.edit', compact('item'));
+        return view('admin.' . $this->moduleName . '.edit', compact('item'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
-        return redirect()->route($this->moduleName . '.admin.index');
+        return redirect()->route('admin.' . $this->moduleName . '.index');
     }
 
     /**

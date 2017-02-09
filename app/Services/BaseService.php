@@ -61,4 +61,9 @@ class BaseService
     {
         return ($request && $request->has('limit')) ? $request->get('limit') : self::DEFAULT_PAGINATE;
     }
+
+    public function create($attributes)
+    {
+        $this->model->create($attributes);
+    }
 }

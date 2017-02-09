@@ -19,7 +19,7 @@ class CreatePrices extends Migration
             $t->string('code');
             $t->float('price');
             $t->integer('discount');
-            $t->integer('stock');
+            $t->integer('stock')->default(0);
             $t->enum('enabled', array(0, 1))->default(0);
             $t->timestamps();
         });
