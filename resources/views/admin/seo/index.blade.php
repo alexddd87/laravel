@@ -1,4 +1,4 @@
-@extends('layouts.admin.default')
+@extends('admin.layouts.default')
 
 @section('content')
 
@@ -26,7 +26,6 @@
                     </thead>
                     <tbody>
                     @foreach($list as $row)
-
                         <tr id="sort{{ $row->id }}">
                             <td class="move"></td>
                             <td class="center"><input type="checkbox" class="check-item" value="{{ $row->id }}" name="id[]" /></td>
@@ -34,8 +33,8 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->slug }}</td>
                             <td><input type="hidden" value="{{ $row->id }}" name="save_id[]" />
-                                <div class="select-popup-container enableStatus" data-id="{{ $row->id }}" data-tb="{{ $tb }}">
-                                    @if($row->enabled==1)
+                                <div class="select-popup-container enableStatus" data-id="{{ $row->id }}" data-tb="{{ $moduleName }}">
+                                    @if($row->enabled == 1)
                                         <span class="label label-success label-mini">Вкл.</span>
                                     @else
                                         <span class="label label-danger label-mini">Выкл</span>
@@ -43,8 +42,8 @@
                                 </div>
                             </td>
                             <td width="10%">
-                                <a href="/admin/contents/edit/{{ $row->id }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                {{ Form::open(array('url' => 'admin/'.$tb.'/destroy/' . $row->id, 'class' => 'inline')) }}
+                                <a href="/admin/{{ $moduleName }}/{{ $row->id }}/edit" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                {{ Form::open(array('url' => 'admin/'.$moduleName.'/destroy/' . $row->id, 'class' => 'inline')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o "></i></button>
                                 {{ Form::close() }}

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c8ed80fd949e33e186c6a4e5e223ba5",
-    "content-hash": "b62ace9e38fe90409f64ec084af3b1f4",
+    "hash": "ea98138d4b3a2f8ac68cc43be7a08c4b",
+    "content-hash": "dc0c19a1f89d86d5179456403aa733a2",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -820,6 +820,51 @@
             "time": "2016-11-26 00:15:39"
         },
         {
+            "name": "mrclay/minify",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/minify.git",
+                "reference": "f4cb31135d288f951bb0af1f23a03d4c00ba9446"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/minify/zipball/f4cb31135d288f951bb0af1f23a03d4c00ba9446",
+                "reference": "f4cb31135d288f951bb0af1f23a03d4c00ba9446",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "tubalmartin/cssmin": "~2.4.8"
+            },
+            "suggest": {
+                "tubalmartin/cssmin": "Support minify with CSSMin (YUI PHP port)"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "min/lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Clay",
+                    "email": "steve@mrclay.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
+            "homepage": "http://code.google.com/p/minify/",
+            "time": "2016-03-08 11:49:57"
+        },
+        {
             "name": "mtdowling/cron-expression",
             "version": "v1.2.0",
             "source": {
@@ -1482,6 +1527,64 @@
                 "temporary-directory"
             ],
             "time": "2017-02-02 13:08:42"
+        },
+        {
+            "name": "stolz/assets",
+            "version": "0.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stolz/Assets.git",
+                "reference": "ef72724db7a5ff01e64c917461a11ae34bdeb788"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stolz/Assets/zipball/ef72724db7a5ff01e64c917461a11ae34bdeb788",
+                "reference": "ef72724db7a5ff01e64c917461a11ae34bdeb788",
+                "shasum": ""
+            },
+            "require": {
+                "mrclay/minify": "~2.1",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "evert/phpdoc-md": "0.*",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "laravel/laravel": "Included ServiceProvider and Facade to work out of the box with Laravel"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stolz\\Assets\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stolz",
+                    "homepage": "https://github.com/Stolz/Assets",
+                    "role": "developer"
+                }
+            ],
+            "description": "An ultra-simple-to-use assets management library",
+            "keywords": [
+                "JS",
+                "agnostic",
+                "asset",
+                "assets",
+                "css",
+                "javascript",
+                "laravel",
+                "minify",
+                "pipeline"
+            ],
+            "time": "2016-06-07 03:13:30"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2692,6 +2795,59 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "lokielse/laravel-admin-generator",
+            "version": "v2.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lokielse/laravel-admin-generator.git",
+                "reference": "9f1fd15c9d120e58b285e30786bb82adbbd8725a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lokielse/laravel-admin-generator/zipball/9f1fd15c9d120e58b285e30786bb82adbbd8725a",
+                "reference": "9f1fd15c9d120e58b285e30786bb82adbbd8725a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lokielse\\AdminGenerator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lokielse",
+                    "email": "lokielse@gmail.com",
+                    "homepage": "http://lokielse.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An Admin Panel Generator for Laravel 5",
+            "homepage": "https://github.com/lokielse/laravel-admin-generator",
+            "keywords": [
+                "admin",
+                "generator",
+                "laravel",
+                "laravel-admin",
+                "laravel-admin-generator",
+                "laravel-console",
+                "lokielse",
+                "panel"
+            ],
+            "time": "2016-07-01 09:34:32"
         },
         {
             "name": "mockery/mockery",

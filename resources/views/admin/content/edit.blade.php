@@ -1,20 +1,20 @@
-@extends('layouts.admin.default')
+@extends('admin.layouts.default')
 
 @section('content')
-    {!! Breadcrumbs::render('admin-contents-edit') !!}
-    <div class="buttonPanel">
-        <div class="pull-left">
-            <a href="/admin/contents/create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> <span>Добавить новую страницу</span></a>
+    <div class="cm-tabs-content">
+        <div class="clear mainbox-title-container">
+            <h1 class="mainbox-title">Редактирование каталог:&nbsp;{{ $item->name }}</h1>
         </div>
-        <div class="pull-left">
-            {{ Form::open(array('url' => 'admin/'.$tb.'/destroy/' . $item->id)) }}
-            {{ Form::hidden('_method', 'DELETE') }}
-            <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> <span>Удалить эту страницу</span></button>
-            {{ Form::close() }}
+        <div class="extra-tools">
+
+            <a class="tool-link" href="/admin/{{ $module }}/create">Добавить новый каталог</a>
+            <a class="tool-link cm-confirm" href="/admin/{{ $module }}/create">Удалить этот каталог</a>
+            <div class="float-right preview-link">
+                <a href="/catalog/{{ $item->url }}" title="{{ $item->url }}" class="tool-link" target="_blank">Предпросмотр</a>
+            </div>
         </div>
-        <div class="clear"></div>
+        <div class="mainbox-body">
+            @include("admin.{$module}._form")
+        </div>
     </div>
-
-    @include("contents.admin._form")
-
 @stop

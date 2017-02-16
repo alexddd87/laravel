@@ -15,8 +15,7 @@ class BaseComposer
      */
     public function compose(View $view)
     {
-        $moduleName = explode('.', $view->getName())[1];
-        $view->with('moduleName', $moduleName);
+        //
     }
 
 

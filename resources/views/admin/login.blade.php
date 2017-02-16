@@ -1,4 +1,4 @@
-@include('layouts.admin.header')
+@include('admin.layouts.header')
 <div class="container">
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -59,4 +59,4 @@
     {!! Form::close() !!}
 
 </div>
-@include('layouts.admin.footer')
+@include('admin.layouts.footer')

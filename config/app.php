@@ -179,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+        Stolz\Assets\Laravel\ServiceProvider::class
     ],
 
     /*

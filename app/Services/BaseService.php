@@ -64,6 +64,17 @@ class BaseService
 
     public function create($attributes)
     {
-        $this->model->create($attributes);
+        return $this->model->create($attributes);
+    }
+
+    public function update($id, $attributes)
+    {
+        $item = $this->model->find($id);
+
+        if ($item && $item->update($attributes)) {
+            return ['status' => 1, 'message' => 'Информация успешно сохранена!'];
+        }
+
+        return ['status' => 0, 'message' => 'Ошибка при сохранение'];
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.admin.default')
+@extends('admin.layouts.default')
 
 @section('content')
     {!! Breadcrumbs::render('admin-contents-edit') !!}

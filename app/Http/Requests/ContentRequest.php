@@ -14,7 +14,7 @@ class ContentRequest extends BaseRequest
         return [
             'name' => 'required|string',
             'url' => 'required|string',
-            //'body' => 'string',
+            'body' => 'string',
         ];
     }
 

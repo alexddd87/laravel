@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Services\ContentService;
 use App\Http\Requests\ContentRequest;
+use Illuminate\Support\Facades\View;
 
 class ContentController extends AdminController
 {
@@ -11,6 +12,10 @@ class ContentController extends AdminController
     {
         $this->service = app(ContentService::class);
         $this->request = ContentRequest::class;
-        $this->moduleName = 'content';
+        $this->module = 'content';
+        $this->moduleName = 'Контент';
+
+        View::share('module', $this->module);
+        View::share('moduleName', $this->moduleName);
     }
 }

@@ -10,8 +10,9 @@ class AdminController extends Controller
 
     protected $request;
 
-    protected $moduleName;
+    protected $module;
 
+    protected $moduleName;
 
     /**
      * Get method
@@ -21,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
         $list = $this->service->all();
-        return view('admin.' . $this->moduleName . '.index', compact('list'));
+        return view('admin.' . $this->module . '.index', compact('list'));
     }
 
     /**
@@ -43,7 +44,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.' . $this->moduleName . '.create');
+        return view('admin.' . $this->module . '.create');
     }
 
     /**
@@ -55,7 +56,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $item = $this->service->find($id);
-        return view('admin.' . $this->moduleName . '.edit', compact('item'));
+        return view('admin.' . $this->module . '.edit', compact('item'));
     }
 
     /**
@@ -67,8 +68,8 @@ class AdminController extends Controller
     public function update($id)
     {
         $request = $this->getValidationRequest();
-
-        return $this->service->update($id, $request->all());
+        $response = $this->service->update($id, $request->all());
+        return $response['status'] == 1 ? response($response, 200) : response($response, 422);
     }
 
     /**
@@ -80,7 +81,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
-        return redirect()->route('admin.' . $this->moduleName . '.index');
+        return redirect()->route('admin.' . $this->module . '.index');
     }
 
     /**
