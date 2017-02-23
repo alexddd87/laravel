@@ -77,4 +77,13 @@ class BaseService
 
         return ['status' => 0, 'message' => 'Ошибка при сохранение'];
     }
+
+    public function delete($id)
+    {
+        $item = $this->model->find($id);
+
+        if ($item) {
+            $item->delete();
+        }
+    }
 }

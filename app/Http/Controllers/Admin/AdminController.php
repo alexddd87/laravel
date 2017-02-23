@@ -22,7 +22,19 @@ class AdminController extends Controller
     public function index()
     {
         $list = $this->service->all();
-        return view('admin.' . $this->module . '.index', compact('list'));
+        return $list;
+    }
+
+    /**
+     * Get method
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function show($id)
+    {
+        $list = $this->service->find($id);
+        return $list;
     }
 
     /**
@@ -80,8 +92,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $this->service->delete($id);
-        return redirect()->route('admin.' . $this->module . '.index');
+        return $this->service->delete($id);
     }
 
     /**

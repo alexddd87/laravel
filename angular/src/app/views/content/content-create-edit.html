@@ -1,0 +1,72 @@
+<div class="cm-tabs-content">
+    <div class="clear mainbox-title-container">
+        <h1 class="mainbox-title">Редактирование каталог:&nbsp;{{ item.name }}</h1>
+    </div>
+    <div class="extra-tools">
+
+        <a class="tool-link" [routerLink]="['ContentCreate']">Добавить новый каталог</a>
+        <a class="tool-link cm-confirm">Удалить этот каталог</a>
+        <div class="float-right preview-link">
+            <a href="/{{ item.url }}" title="{{ item.url }}" class="tool-link" target="_blank">Предпросмотр</a>
+        </div>
+    </div>
+    <div class="mainbox-body">
+        <div class="tabs cm-j-tabs cm-track">
+            <ul>
+                <li id="basic" class="cm-js cm-active"><a href="#">Общее</a></li>
+                <li id="seodata" class="cm-js"><a href="#">Seo-данные</a></li>
+            </ul>
+        </div>
+        <form #formresturante="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="cm-form-highlight">
+            <!--start basic-->
+            <div id="content_basic" class="cm-tabs">
+                <fieldset>
+                    <h2 class="subheader"> Информация </h2>
+                    <div class="form-field">
+                        <label class="cm-required" for="name">Название:</label>
+                        <input type="text" class="input-text-large main-input" [(ngModel)]="item.name" size="55"
+                               name="name" id="name"/>
+                    </div>
+                    <div class="form-field">
+                        <label class="cm-required" for="url">URL:</label>
+                        <input type="text" class="input-text-large main-input" [(ngModel)]="item.url" size="55"
+                               name="url" id="url"/>
+                    </div>
+                    <div class="form-field">
+                        <label class="cm-required" for="sub_id">Раздел:</label>
+                        <select name="sub_id" id="sub_id">
+
+                        </select>
+                    </div>
+
+                </fieldset>
+            </div>
+            <!--end basic-->
+
+            <div class="buttons-container cm-toggle-button buttons-bg">
+                <div class="cm-buttons-floating">
+                    <div class="cm-buttons-placeholder">
+                        <div *ngIf="!item.id">
+                            <span class="submit-button cm-button-main">
+                                <input type="submit" value="Создать" name="create" />
+                            </span>&nbsp;
+                            <span class="submit-button cm-button-main">
+                                <input type="submit" value="Создать и открыть" name="create_and_open" />
+                            </span>  или&nbsp;&nbsp;
+                            <a class="underlined tool-link" [routerLink]="['ContentIndex']">Отменить</a>
+                        </div>
+                        <div *ngIf="item.id">
+                            <span class="submit-button cm-button-main">
+                                <input type="submit" value="Сохранить" name="save" class="save_or_create" />
+                            </span>&nbsp;
+                            <span class="submit-button cm-button-main cm-save-and-close">
+                                <input type="submit" value="Сохранить и закрыть" name="save_and_close" class="save_or_create" />
+                            </span> или&nbsp;&nbsp;
+                            <a class="underlined tool-link" [routerLink]="['ContentIndex']">Отменить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

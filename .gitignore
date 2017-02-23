@@ -1,6 +1,9 @@
 /node_modules
+/angular/node_modules
+/angular/typings
 /public/storage
 /public/hot
+/public/admin
 /storage/*.key
 /vendor
 /.idea
